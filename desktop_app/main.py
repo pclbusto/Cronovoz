@@ -1,5 +1,6 @@
 import flet as ft
 from views.pacientes_view import PacientesView
+from views.evoluciones_view import EvolucionesView
 import updater
 
 def main(page: ft.Page):
@@ -30,8 +31,6 @@ def main(page: ft.Page):
                 
                 ok, update_msg = updater.perform_update()
                 
-                # Definir dlg_result antes de usarlo en la lambda del cierre si fuera necesario, 
-                # pero aquí lo definimos y asignamos.
                 dlg_result = ft.AlertDialog(
                     title=ft.Text("Resultado de Actualización"),
                     content=ft.Text(update_msg),
@@ -42,7 +41,6 @@ def main(page: ft.Page):
                     dlg_result.open = False
                     page.update()
 
-                # Reasignar el botón con la función correcta
                 dlg_result.actions[0].on_click = close_result_dlg
                 
                 page.dialog = dlg_result
@@ -87,6 +85,8 @@ def main(page: ft.Page):
             )
         elif rail.selected_index == 1:
             contenido_principal.controls.append(PacientesView())
+        elif rail.selected_index == 2:
+            contenido_principal.controls.append(EvolucionesView())
         page.update()
 
     rail = ft.NavigationRail(
@@ -104,6 +104,11 @@ def main(page: ft.Page):
                 icon=ft.Icons.PEOPLE_OUTLINE,
                 selected_icon=ft.Icons.PEOPLE,
                 label="Pacientes"
+            ),
+            ft.NavigationRailDestination(
+                icon=ft.Icons.MIC_NONE_OUTLINED,
+                selected_icon=ft.Icons.MIC,
+                label="Evoluciones"
             ),
         ],
         on_change=cambiar_vista,
