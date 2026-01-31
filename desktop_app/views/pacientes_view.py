@@ -7,7 +7,7 @@ class PacientesView(ft.Column):
     def __init__(self):
         super().__init__()
         self.expand = True
-        
+
         self.dt = ft.DataTable(
             columns=[
                 ft.DataColumn(ft.Text("Apellido")),
@@ -18,7 +18,6 @@ class PacientesView(ft.Column):
             rows=[],
         )
 
-        # Campos del formulario
         self.tf_nombre = ft.TextField(label="Nombre")
         self.tf_apellido = ft.TextField(label="Apellido")
         self.tf_dni = ft.TextField(label="DNI")
@@ -39,17 +38,13 @@ class PacientesView(ft.Column):
 
         self.controls = [
             ft.Row([
-                ft.Text("Listado de Pacientes", size=24, weight="bold"),
-                ft.IconButton("refresh", on_click=self.cargar_pacientes),
+                ft.Text("Listado de Pacientes", size=24, weight=ft.FontWeight.BOLD),
+                ft.IconButton(icon=ft.Icons.REFRESH, on_click=self.cargar_pacientes),
             ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
             self.dt,
-            ft.FloatingActionButton(
-                icon="add",
-                on_click=self.abrir_dialogo
-            )
+            ft.FloatingActionButton(icon=ft.Icons.ADD, on_click=self.abrir_dialogo)
         ]
-        
-        # Cargar datos iniciales
+
         self.cargar_pacientes(None, update=False)
 
     def cerrar_dialogo(self, e):
@@ -74,14 +69,18 @@ class PacientesView(ft.Column):
             db.add(nuevo)
             db.commit()
             db.close()
-            
+
             self.cerrar_dialogo(None)
             self.cargar_pacientes(None)
             if self.page:
-                self.page.show_snack_bar(ft.SnackBar(ft.Text("Paciente guardado exitosamente")))
+                self.page.snack_bar = ft.SnackBar(ft.Text("Paciente guardado exitosamente"))
+                self.page.snack_bar.open = True
+                self.page.update()
         except Exception as ex:
             if self.page:
-                self.page.show_snack_bar(ft.SnackBar(ft.Text(f"Error: {ex}")))
+                self.page.snack_bar = ft.SnackBar(ft.Text(f"Error: {ex}"))
+                self.page.snack_bar.open = True
+                self.page.update()
 
     def cargar_pacientes(self, e, update=True):
         self.dt.rows.clear()
@@ -103,6 +102,6 @@ class PacientesView(ft.Column):
             print(f"Error cargando pacientes: {ex}")
         finally:
             db.close()
-        
+
         if update and self.page:
             self.update()
