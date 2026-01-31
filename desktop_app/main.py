@@ -105,7 +105,7 @@ def main(page: ft.Page):
             ft.NavigationRailDestination(
                 icon=ft.Icons.DASHBOARD_OUTLINED,
                 selected_icon=ft.Icons.DASHBOARD,
-                label="Inicio"
+                label="Inicios"
             ),
             ft.NavigationRailDestination(
                 icon=ft.Icons.PEOPLE_OUTLINE,
