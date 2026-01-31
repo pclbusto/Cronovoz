@@ -87,6 +87,8 @@ def main(page: ft.Page):
             contenido_principal.controls.append(PacientesView())
         elif rail.selected_index == 2:
             contenido_principal.controls.append(EvolucionesView())
+        elif rail.selected_index == 3:
+             contenido_principal.controls.append(ft.Text("Vista de Prueba para Update", size=30, color="green"))
         page.update()
 
     rail = ft.NavigationRail(
@@ -109,6 +111,11 @@ def main(page: ft.Page):
                 icon=ft.Icons.MIC_NONE_OUTLINED,
                 selected_icon=ft.Icons.MIC,
                 label="Evoluciones"
+            ),
+            ft.NavigationRailDestination(
+                icon=ft.Icons.UPDATE,
+                selected_icon=ft.Icons.UPDATE_DISABLED,
+                label="Test Update"
             ),
         ],
         on_change=cambiar_vista,
