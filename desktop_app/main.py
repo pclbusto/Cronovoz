@@ -33,7 +33,12 @@ def main(page: ft.Page):
                 
                 dlg_result = ft.AlertDialog(
                     title=ft.Text("Resultado de Actualización"),
-                    content=ft.Text(update_msg),
+                    content=ft.Column(
+                        [ft.Text(update_msg)], 
+                        scroll=ft.ScrollMode.AUTO, 
+                        height=300, 
+                        tight=True
+                    ),
                     actions=[ft.TextButton("Cerrar", on_click=lambda e: close_result_dlg(e))]
                 )
                 

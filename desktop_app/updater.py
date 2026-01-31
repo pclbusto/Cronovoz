@@ -57,7 +57,7 @@ def perform_update():
     repo_dir = os.path.dirname(current_dir)
     
     try:
-        run_git_command(["pull", "origin", "main"], repo_dir)
-        return True, "Actualización exitosa. Por favor reinicia la aplicación."
+        output = run_git_command(["pull", "origin", "main", "--no-edit"], repo_dir)
+        return True, f"Actualización exitosa. Detalles:\n{output}\n\nPor favor reinicia la aplicación."
     except Exception as e:
         return False, f"Error al actualizar: {str(e)}"
