@@ -3,9 +3,9 @@ from rest_framework.permissions import IsAuthenticated
 from .models import TestTemplate, Evaluation
 from .serializers import TestTemplateSerializer, EvaluationSerializer
 
-class TestTemplateViewSet(viewsets.ReadOnlyModelViewSet):
-    # Templates are created by admins via the Django Admin panel or a future management interface.
-    # Regular users (professionals) can only read them to apply them.
+class TestTemplateViewSet(viewsets.ModelViewSet):
+    # Templates are created by admins via the Django Admin panel, a future management interface,
+    # or by professionals to create or modify custom tests.
     queryset = TestTemplate.objects.all()
     serializer_class = TestTemplateSerializer
     permission_classes = [IsAuthenticated]

@@ -1,0 +1,157 @@
+.calendar-container {
+    padding: 20px;
+    height: calc(100vh - 80px);
+    /* Desktop default */
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.calendar-header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-back-calendar {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.calendar-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* FullCalendar Styling Adjustments for Dark Mode */
+.calendar-wrapper {
+    flex: 1;
+    background: white;
+    /* Mantener fondo blanco para mejor legibilidad clásica de calendarios, o podés usar dark */
+    border-radius: 12px;
+    padding: 15px;
+    overflow-y: auto;
+    color: #1e293b;
+    /* Texto oscuro sobre el calendario blanco */
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.5rem !important;
+    font-weight: bold;
+}
+
+.fc-button-primary {
+    background-color: #8b5cf6 !important;
+    border-color: #7c3aed !important;
+}
+
+.fc-event {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.fc-event:hover {
+    opacity: 0.8;
+}
+
+/* Modal Form Styles specific to the calendar */
+.recurrence-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.recurrence-form select,
+.recurrence-form input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    color-scheme: dark;
+    /* Helps native date/time pickers adopt dark theme */
+}
+
+.recurrence-form input:focus,
+.recurrence-form select:focus {
+    outline: none;
+    border-color: #8b5cf6;
+}
+
+.days-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hidden-check {
+    display: none;
+}
+
+.day-chip {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.day-chip:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.day-chip.selected {
+    background: rgba(139, 92, 246, 0.3);
+    border-color: #8b5cf6;
+    color: #d8b4fe;
+}
+
+/* Mobile Overrides */
+@media (max-width: 768px) {
+    .calendar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 2000;
+        background: #0f172a;
+        padding: 10px;
+    }
+
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .calendar-header .btn-primary {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .fc .fc-toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .fc .fc-toolbar-title {
+        font-size: 1.2rem !important;
+    }
+}

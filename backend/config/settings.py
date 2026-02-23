@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'patients',
     'evaluations',
+    'appointments',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
+
+# Media files (Audio uploads, etc)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

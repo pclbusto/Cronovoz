@@ -3,13 +3,29 @@ import './App.css'
 import Auth from './components/Auth'
 import Patients from './components/Patients'
 import Evaluations from './components/Evaluations'
+import TestTemplates from './components/TestTemplates'
+import CalendarView from './components/CalendarView'
 import API_BASE_URL from './apiConfig'
+import { useRegisterSW } from 'virtual:pwa-register/react'
 
 function App() {
   const [token, setToken] = useState<string | null>(localStorage.getItem('token'))
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'patients' | 'evaluations'>('dashboard')
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'patients' | 'evaluations' | 'templates' | 'calendar'>('dashboard')
   const [evalPatientId, setEvalPatientId] = useState<number | null>(null)
   const [message, setMessage] = useState('Cargando desde Django...')
+
+  // Setup PWA Service Worker Hook
+  const {
+    needRefresh: [needRefresh, setNeedRefresh],
+    updateServiceWorker,
+  } = useRegisterSW({
+    onRegistered(r) {
+      console.log('SW Registered: ', r)
+    },
+    onRegisterError(error) {
+      console.log('SW registration error', error)
+    },
+  })
 
   useEffect(() => {
     if (token) {
@@ -64,11 +80,32 @@ function App() {
               >
                 Evaluaciones
               </button>
+              <button
+                className={`nav-link ${activeTab === 'calendar' ? 'active' : ''}`}
+                onClick={() => setActiveTab('calendar')}
+              >
+                Turnos
+              </button>
+              <button
+                className={`nav-link ${activeTab === 'templates' ? 'active' : ''}`}
+                onClick={() => setActiveTab('templates')}
+              >
+                Plantillas
+              </button>
             </div>
           </div>
           <button onClick={handleLogout} className="logout-btn">Salir</button>
         </div>
         <div className="main-content">
+          {needRefresh && (
+            <div className="pwa-toast">
+              <div className="pwa-message">
+                <span>Nueva actualización disponible.</span>
+              </div>
+              <button className="btn-primary" onClick={() => updateServiceWorker(true)}>Recargar</button>
+              <button className="btn-secondary" onClick={() => setNeedRefresh(false)}>Cerrar</button>
+            </div>
+          )}
           {activeTab === 'dashboard' && (
             <>
               <h1>Vite + Django</h1>
@@ -87,6 +124,8 @@ function App() {
             />
           )}
           {activeTab === 'evaluations' && <Evaluations token={token} defaultPatientId={evalPatientId} />}
+          {activeTab === 'templates' && <TestTemplates token={token} />}
+          {activeTab === 'calendar' && <CalendarView token={token} onClose={() => setActiveTab('dashboard')} />}
         </div>
       </div>
     </>

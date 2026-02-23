@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.authtoken.views import obtain_auth_token
@@ -23,11 +25,14 @@ from rest_framework.routers import DefaultRouter
 from accounts.views import RegisterView
 from patients.views import PatientViewSet
 from evaluations.views import TestTemplateViewSet, EvaluationViewSet
+from appointments.views import AppointmentViewSet, TreatmentPlanViewSet
 
 router = DefaultRouter()
 router.register(r'patients', PatientViewSet, basename='patient')
 router.register(r'test-templates', TestTemplateViewSet, basename='testtemplate')
 router.register(r'evaluations', EvaluationViewSet, basename='evaluation')
+router.register(r'appointments', AppointmentViewSet, basename='appointment')
+router.register(r'treatment-plans', TreatmentPlanViewSet, basename='treatmentplan')
 
 @api_view(['GET'])
 def test_api(request):
@@ -40,3 +45,6 @@ urlpatterns = [
     path('api/auth/login/', obtain_auth_token, name='login'),
     path('api/', include(router.urls)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

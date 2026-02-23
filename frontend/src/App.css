@@ -169,3 +169,26 @@
     padding: 20px 10px;
   }
 }
+
+/* PWA Toast Updates */
+.pwa-toast {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 16px;
+  padding: 12px;
+  border: 1px solid #8b5cf6;
+  border-radius: 8px;
+  z-index: 9999;
+  text-align: left;
+  box-shadow: 3px 4px 5px 0px #00000033;
+  background-color: #1e293b;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.pwa-toast .pwa-message {
+  margin-bottom: 0;
+  color: white;
+}
