@@ -1,0 +1,357 @@
+.evaluations-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.eval-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.eval-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f8fafc;
+    margin: 0 0 10px 0;
+}
+
+.eval-header p {
+    color: #94a3b8;
+    margin: 0;
+}
+
+.eval-controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.select-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.select-group label {
+    font-weight: 600;
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+.select-group select {
+    padding: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #f8fafc;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.select-group select:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+.select-group select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.eval-form-container {
+    margin-bottom: 40px;
+    border-top: 4px solid #8b5cf6;
+}
+
+.eval-form-container h3 {
+    margin: 0 0 5px 0;
+    color: #f8fafc;
+    font-size: 22px;
+}
+
+.template-desc {
+    color: #94a3b8;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+/* RJSF overrides to make it look premium and dark mode compatible */
+.schema-form-wrapper {
+    color: #f8fafc;
+}
+
+.schema-form-wrapper .form-group {
+    margin-bottom: 20px;
+}
+
+.schema-form-wrapper label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #cbd5e1;
+}
+
+.schema-form-wrapper input[type="text"],
+.schema-form-wrapper input[type="number"],
+.schema-form-wrapper select {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.schema-form-wrapper input[type="text"]:focus,
+.schema-form-wrapper input[type="number"]:focus,
+.schema-form-wrapper select:focus {
+    outline: none;
+    border-color: #60a5fa;
+}
+
+.schema-form-wrapper fieldset {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.schema-form-wrapper legend {
+    padding: 0 10px;
+    color: #8b5cf6;
+    font-weight: 600;
+}
+
+.schema-form-wrapper button[type="submit"] {
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 20px;
+}
+
+.schema-form-wrapper button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* History styling */
+.eval-history h3 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 22px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.history-card {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #8b5cf6;
+    border-radius: 12px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.history-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.history-card h4 {
+    margin: 0 0 10px 0;
+    color: #a78bfa;
+    font-size: 18px;
+}
+
+.history-card p {
+    margin: 5px 0;
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+.results-preview {
+    margin-top: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.results-preview pre {
+    margin: 0;
+    font-size: 12px;
+    color: #a78bfa;
+    font-family: 'Fira Code', monospace;
+}
+
+.no-history {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Custom UI Schema Classes - User Provided */
+/* Obligamos al contenedor a ser una fila horizontal */
+.fila-fono>div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Una línea divisoria sutil */
+    padding: 12px 0;
+}
+
+/* El título a la izquierda (ocupa el 35%) */
+.fila-fono label.control-label {
+    width: 35%;
+    font-weight: bold;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #a78bfa !important;
+}
+
+/* El contenedor de los checkboxes/radios a la derecha (ocupa el 65%) */
+.fila-fono .field-radio-group,
+.fila-fono .field-checkbox-group,
+.fila-fono .MuiFormGroup-root {
+    width: 65%;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    /* Si son muchas opciones, bajan a la línea siguiente solas */
+    gap: 15px;
+    /* Espacio entre opciones */
+}
+
+/* MUI specifics */
+.fila-fono .MuiFormControlLabel-root {
+    margin-right: 0;
+    margin-bottom: 5px;
+}
+
+.fila-fono .MuiTypography-root {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+.fila-fono .MuiRadio-root,
+.fila-fono .MuiCheckbox-root {
+    color: #64748b;
+}
+
+.fila-fono .MuiRadio-root.Mui-checked,
+.fila-fono .MuiCheckbox-root.Mui-checked {
+    color: #8b5cf6;
+}
+
+/* Fix for RJSF inline radios and checkboxes in dark mode */
+.schema-form-wrapper .radio-inline,
+.schema-form-wrapper .checkbox-inline {
+    display: inline-flex;
+    align-items: center;
+    color: #cbd5e1;
+    font-size: 14px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s;
+    margin-right: 10px;
+}
+
+.schema-form-wrapper .radio-inline:hover,
+.schema-form-wrapper .checkbox-inline:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.schema-form-wrapper input[type="radio"],
+.schema-form-wrapper input[type="checkbox"] {
+    margin-right: 8px;
+    margin-top: 0;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    accent-color: #8b5cf6;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .eval-controls {
+        flex-direction: column;
+    }
+
+    .history-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    /* .fila-fono responsive adjustments */
+    .fila-fono>div {
+        flex-direction: column !important;
+        align-items: flex-start;
+    }
+
+    .fila-fono label.control-label {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .fila-fono .field-radio-group,
+    .fila-fono .field-checkbox-group,
+    .fila-fono .MuiFormGroup-root {
+        width: 100%;
+    }
+
+    .schema-form-wrapper .radio-inline,
+    .schema-form-wrapper .checkbox-inline {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
