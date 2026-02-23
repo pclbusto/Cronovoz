@@ -73,7 +73,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
             <div className="auth-card">
                 <div className="auth-header">
                     <h2>{isLogin ? '¡Bienvenido de nuevo!' : 'Creá tu cuenta'}</h2>
-                    <p>{isLogin ? 'Ingresá tus datos para continuar' : 'Únite a Cronovoz hoy mismo'}</p>
+                    <p>{isLogin ? 'Ingresá tus datos para continuar' : 'Únite a ComunicaFono hoy mismo'}</p>
                 </div>
 
                 {error && <div className="auth-error">{error}</div>}

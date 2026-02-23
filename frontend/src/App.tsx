@@ -41,7 +41,7 @@ function App() {
       <div className="dashboard">
         <div className="top-nav">
           <div className="nav-left">
-            <span className="brand">Cronovoz</span>
+            <span className="brand">ComunicaFono</span>
             <div className="nav-links">
               <button
                 className={`nav-link ${activeTab === 'dashboard' ? 'active' : ''}`}
